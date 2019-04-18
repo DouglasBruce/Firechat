@@ -1,0 +1,124 @@
+mat-form-field {
+    width: 100%;
+}
+
+.fullDialogHeight {
+    min-height: calc(100vh - 164px); 
+    max-height: calc(100vh - 164px);
+}
+
+.matErr {
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    line-height: normal;
+    margin-top: 2px;
+    letter-spacing: 0;
+}
+
+.matErrIcon {
+    font-size: 16px !important;
+    margin-right: 8px;
+    margin-top: -2px;
+}
+
+.headingContainer {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    padding: 0 0 20px 0;
+}
+
+.dialogTitle {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-shrink: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+    word-wrap: break-word;
+    font: 400 18px/32px 'Product Sans',Roboto,arial,sans-serif;
+    margin-bottom: 4px;
+}
+
+.closeContainer {
+    -webkit-user-select: none;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+    border: 0;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    height: 48px;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    width: 48px;
+    z-index: 0;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    display: block;
+    margin: -12px -6px 0 0;
+}
+
+.closeContent {
+    position: relative;
+    top: 50%;
+}
+
+.closeContent > span {
+    display: inline-block;
+    position: relative;
+}
+
+.dialogContent {
+    -webkit-box-flex: 2;
+    box-flex: 2;
+    -webkit-flex-grow: 2;
+    flex-grow: 2;
+    -webkit-flex-shrink: 2;
+    flex-shrink: 2;
+    display: block;
+    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    overflow-y: auto;
+}
+
+.dialogInput {
+    padding-bottom: 4px;
+    min-width: 200px;
+    width: 100%;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    outline: none;
+}
+
+.dialogAction {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    box-pack: end;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    padding: 24px 0 0 0; 
+}

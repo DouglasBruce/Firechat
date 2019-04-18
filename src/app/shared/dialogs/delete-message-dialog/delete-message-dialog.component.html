@@ -1,0 +1,12 @@
+<div class="headingContainer">
+    <div class="dialogTitle">Delete this message?</div>
+</div>
+<content class="dialogContent">
+    <div class="deleteWarning">
+        This message will be permanently removed and can't be restored
+    </div>
+</content>
+<div class="dialogAction">
+    <button mat-button mat-dialog-close style="letter-spacing: .25px;">Cancel</button>
+    <button mat-button color="primary" (click)="delete()" style="letter-spacing: .25px;">Delete</button>
+</div>

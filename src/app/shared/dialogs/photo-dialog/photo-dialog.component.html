@@ -1,0 +1,41 @@
+<div class="headingContainer">
+  <div class="dialogTitle">Change profile photo</div>
+  <div style="height: 0;">
+    <div class="closeContainer">
+      <content class="closeContent">
+        <span style="top: -20px;">
+          <button mat-icon-button tabindex="-1" matTooltip="Close" (click)="closeDialog()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </span>
+      </content>
+    </div>
+  </div>
+</div>
+<content class="dialogContent" style="margin: 0 -24px;">
+  <div>
+    <div class="dialogInput">
+      <input id="file" class="file-input" type="file" accept="image/*" (change)="startUpload($event.target.files)" hidden>
+      <mat-nav-list>
+        <a mat-list-item class="separator" (click)="uploadPhoto()">
+          <div class="text photoBlue">
+            Upload photo
+          </div>
+        </a>
+        <a mat-list-item class="separator bottomSeparator" *ngIf="data.photoPath !== null" (click)="removePhoto(data.photoPath)">
+          <div class="text" style="color: #f44336;">
+            Remove current photo
+          </div>
+        </a>
+        <a mat-list-item class="separator bottomSeparator" *ngIf="data.photoPath === null" (click)="changeColor(data.uid, data.color)">
+          <div class="text" style="color: #4CAF50;">
+            Change color
+          </div>
+        </a>
+      </mat-nav-list>
+    </div>
+  </div>
+</content>
+<div class="dialogAction">
+  <button mat-button style="letter-spacing: .25px;" (click)="closeDialog()">Cancel</button>
+</div>

@@ -1,0 +1,20 @@
+<div class="headingContainer">
+    <div class="dialogTitle">Create chat</div>
+</div>
+<content class="dialogContent">
+    <div>
+        <div class="dialogInput">
+            <form [formGroup]="chatNameForm" novalidate (keyup.enter)="update()">
+                <mat-form-field color="primary" appearance="outline" hideRequiredMarker="true" spellcheck="false">
+                    <mat-label>Chat name</mat-label>
+                    <input matInput required [formControl]="chatName" type="text" autocomplete="off" [errorStateMatcher]="matcher" autofocus>
+                    <mat-error *ngIf="chatName.invalid" class="matErr"><mat-icon class="matErrIcon">error</mat-icon> {{getChatNameErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+</content>
+<div class="dialogAction">
+    <button mat-button mat-dialog-close style="letter-spacing: .25px;">Cancel</button>
+    <button mat-button color="primary" [disabled]="chatNameForm.invalid" (click)="update()" style="letter-spacing: .25px;">Done</button>
+</div>

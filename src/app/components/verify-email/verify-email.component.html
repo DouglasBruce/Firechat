@@ -1,0 +1,46 @@
+<div *ngIf="authService.user$ | async as user;"> 
+  <app-verify-nav></app-verify-nav>
+  <div class="container boxSizing">
+    <div class="cardContainer">
+      <div class="formContainer">
+        <div class="logoContainer">
+          <div id="logo" class="logo">
+            <span class="g_blue">F</span>
+            <span class="g_red">i</span>
+            <span class="g_yellow">r</span>
+            <span class="g_blue">e</span>
+            <span class="g_green">c</span>
+            <span class="g_red">h</span>
+            <span class="g_yellow">a</span>
+            <span class="g_green">t</span>
+          </div>
+        </div>
+        <div class="cardContentContainer">
+          <div class="cardInfoContainer">
+            <h1 class="headingText">Email verification required</h1>
+            <div class="subheadingText">Thank you for joining Firechat</div>
+          </div>
+          <div class="cardFormContainer">
+            <div class="cardForm">
+              <div class="cardContent">
+                An email has been sent to: 
+                <div class="emailText">{{ user.email }}</div>
+                Please follow the instructions in the verification email to finish creating your Firechat account.
+              </div>
+              <div class="cardActionContainer">
+                <div class="cardAction">
+                  <div class="first">
+                    <button mat-flat-button color="primary" (click)="resend()"><span class="btnMat">Resend</span></button>
+                  </div>
+                  <div class="last">
+                    <button mat-button color="primary" (click)="resend()"><span style="letter-spacing: .25px; font-family: 'Product Sans', Roboto, Arial, sans-serif;">Didn't receive email?</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

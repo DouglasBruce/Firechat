@@ -1,0 +1,120 @@
+.container::before {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    content: '';
+    display: block;
+    height: 24px;
+}
+
+.container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    min-height: calc(100vh);
+    position: relative;
+}
+
+.container::after {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    content: '';
+    display: block;
+    height: 24px;
+}
+
+.iMMUFb {
+    -webkit-align-items: center;
+    align-items: center;
+    color: #fff;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    height: 61px;
+    left: 0;
+    padding: 0 14px;
+    position: absolute;
+    right: 0;
+    z-index: 6000;
+}
+
+.Tm3hvb {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin-left: 12px;
+}
+
+.tYiJZ {
+    color: #fff;
+    font: 400 15px/24px Roboto,arial,sans-serif;
+    line-height: 18px;
+    margin: 1px 0;
+}
+
+.sMiqzc {
+    color: rgba(255,255,255,.87);
+    font: 400 13px/20px Roboto,arial,sans-serif;
+    line-height: 16px;
+}
+
+.mUbCce {
+    -webkit-user-select: none;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+    border: 0;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    height: 48px;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    width: 48px;
+    z-index: 0;
+}
+
+.fKz7Od {
+    color: rgba(0,0,0,0.54);
+    fill: rgba(0,0,0,0.54);
+}
+
+.I99yUd {
+    fill: #fff;
+}
+
+.xjKiLb {
+    position: relative;
+    top: 50%;
+}
+
+.xjKiLb>span {
+    display: inline-block;
+    position: relative;
+}
+
+img {
+    max-width: 80vw;
+    max-height: 88vh;
+    margin: auto;
+}

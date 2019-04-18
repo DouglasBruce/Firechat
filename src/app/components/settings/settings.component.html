@@ -1,0 +1,172 @@
+<app-settings-nav></app-settings-nav>
+<div *ngIf="auth.user$ | async; then authenticated else guest">
+</div>
+
+<ng-template #guest>
+  <div class="spinnerContainer">
+    <mat-spinner color="primary"></mat-spinner>
+  </div>
+</ng-template>
+
+<ng-template #authenticated>
+  <div *ngIf="auth.user$ | async as user">
+    <div class="mainContainer">
+      <div role="main">
+        <div>
+          <div class="container">
+            <div class="cardsContainer">
+              <header class="headerContainer">
+                <h1 class="headingText">Personal info</h1>
+                <div class="subheadingText">Basic info, like your name and photo, that you use on Firechat services</div>
+              </header>
+              <section class="cards">
+                <article class="cardSettingContainer">
+                  <div class="card">
+                    <div class="innerCard">
+                      <div class="section">
+                        <div>
+                          <div class="sectionContent">
+                            <header class="cardHeader">
+                              <div class="cardHeaderContent">
+                                <h2 class="cardHeadingText">Profile</h2>
+                                <div class="subCardHeadingText">
+                                  <div>
+                                    Some info may be visible to other people using Firechat services.
+                                  </div>
+                                </div>
+                              </div>
+                            </header>
+                          </div>
+                        </div>
+                      </div>
+                      <mat-nav-list>
+                        <a mat-list-item class="section clickable single" (click)="editPhoto(user.displayName, user.photoPath, user.uid, user.color)">
+                          <div class="sectionContent">
+                            <div class="flexDisplay">
+                              <div class="textContainer">
+                                <div class="textRow">
+                                  <div class="headingContainer">
+                                    <div class="tContainer">
+                                      <h3 class="heading">Photo</h3>
+                                    </div>
+                                  </div>
+                                  <div class="subheadingContainer">
+                                    <div class="tContainer">
+                                      <div class="subHeading">A photo helps personalize your account</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="photoContainer">
+                                <figure class="photo">
+                                  <img *ngIf="user.photoURL != null" [src]="user.photoURL" class="avatar">
+                                  <div *ngIf="user.photoURL == null" class="photoAvatar" [ngClass]="user.color">
+                                    {{ user.displayName.charAt(0) }}
+                                  </div>
+                                </figure>
+                                <div class="photoIconContainer">
+                                  <div class="photoIcon"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <a mat-list-item class="section clickable arrow_icon single" (click)="editUsername(user.displayName)">
+                          <div class="separatorContainer" role="separator">
+                            <div class="separator"></div>
+                          </div>
+                          <div class="sectionContent">
+                            <div class="flexDisplay">
+                              <div class="textContainer">
+                                <div class="textRow">
+                                  <div class="headingContainer">
+                                    <div class="tContainer">
+                                      <h3 class="heading">Name</h3>
+                                    </div>
+                                  </div>
+                                  <div class="subheadingContainer">
+                                    <div class="tContainer">
+                                      <div class="userInfo">{{ user.displayName }}</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="iconContainer">
+                                <figure class="icon" aria-hidden="true">
+                                  <mat-icon class="matArrow">keyboard_arrow_right</mat-icon>
+                                </figure>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <a mat-list-item class="section clickable arrow_icon single" (click)="editEmail(user.displayName, user.photoURL, user.color, user.email)">
+                          <div class="separatorContainer" role="separator">
+                            <div class="separator"></div>
+                          </div>
+                          <div class="sectionContent">
+                            <div class="flexDisplay">
+                              <div class="textContainer">
+                                <div class="textRow">
+                                  <div class="headingContainer">
+                                    <div class="tContainer">
+                                      <h3 class="heading">Email</h3>
+                                    </div>
+                                  </div>
+                                  <div class="subheadingContainer">
+                                    <div class="tContainer">
+                                      <div class="userInfo">{{ user.email }}</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="iconContainer">
+                                <figure class="icon" aria-hidden="true">
+                                  <mat-icon class="matArrow">keyboard_arrow_right</mat-icon>
+                                </figure>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <a mat-list-item class="section clickable arrow_icon" (click)="editPassword(user.displayName, user.photoURL, user.color, user.email)">
+                          <div class="separatorContainer" role="separator">
+                            <div class="separator"></div>
+                          </div>
+                          <div class="sectionContent">
+                            <div class="flexDisplay">
+                              <div class="textContainer">
+                                <div class="textRow">
+                                  <div class="headingContainer">
+                                    <div class="tContainer">
+                                      <h3 class="heading">Password</h3>
+                                    </div>
+                                  </div>
+                                  <div class="subheadingContainer">
+                                    <div class="tContainer">
+                                      <div class="userInfo">••••••••</div>
+                                    </div>
+                                    <div class="tContainer">
+                                      <div class="userInfo2">Last changed {{ user.lastUpdated | lastUpdatedConvertor:trigger }}</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="iconContainer">
+                                <figure class="icon" aria-hidden="true">
+                                  <mat-icon class="matArrow">keyboard_arrow_right</mat-icon>
+                                </figure>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </mat-nav-list>
+                    </div>
+                  </div>
+                </article>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

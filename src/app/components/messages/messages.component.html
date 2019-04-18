@@ -1,0 +1,354 @@
+<div class="MCcOAc" *ngIf="authService.user$ | async as user;">
+  <div class="SSPGKf">
+    <div class="T4LgNb eejsDc">
+      <div class="kFwPee">
+        <div class="x4Tquc">
+          <div class="x4Tquc">
+            <div class="x4Tquc">
+              <div class="x4Tquc">
+                <div class="x4Tquc GcJF5e oLirk" id="screenChanger">
+                  <div class="JsUZue">
+                    <button mat-fab (click)="create()" class="fab bottomRight" [ngClass]="{extendedFab: isFabExtended, hideFab: hasChatBeenSelected}">
+                      <mat-icon>message</mat-icon>
+                      <span style="font-family: 'Product Sans', Roboto, Arial, sans-serif;">Start chat</span>
+                    </button>
+                    <div class="kX8T7c">
+                      <div class="kegSbc">
+                        <h1 class="tuQbQc">Messages</h1>
+                      </div>
+                      <div class="p5w6ac">
+                        <div class="e8PJlc">
+                          <div class="JRtysb" role="button" matRipple [matRippleCentered]="true" [matMenuTriggerFor]="menu" matTooltip="More options">
+                            <content class="MhXXcc oJeWuf">
+                              <span class="Lw7GHd snByac">
+                                <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="Y6ELgd"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+                              </span>
+                            </content>
+                          </div>
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="settings()">Settings</button>
+                            <button mat-menu-item *ngIf="!theme.darkTheme" (click)="toggleDarkTheme()">Enable dark mode</button>
+                            <button mat-menu-item *ngIf="theme.darkTheme" (click)="toggleDarkTheme()">Disable dark mode</button>
+                            <button mat-menu-item *ngIf="authService.user$ | async;" (click)="authService.signOut()">Sign out</button>
+                          </mat-menu>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="HaJdSe">
+                      <div class="UH0AO" role="navigation" aria-label="Conversation list">
+                        <div id="startChatButton" class="U26fgb LcKYpd hpyhfd" role="button" (click)="create()" matRipple aria-label="Start chat" aria-disabled="false" tabindex="0">
+                          <div class="CaAkD uMtETc">
+                            <svg xmlns="https://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF" class="qnMB2e"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+                          </div>
+                          <div class="eyZv2b">Start chat</div>
+                        </div>
+                        <div id="chatRoomList" class="XCHXxd" (scroll)="scroll()">
+                          <div class="pXeIKc" role="listbox" aria-label="Conversations" tabindex="0" role="listbox">
+                            <div class="hg3Lgc qs41qe B3Z8E" *ngIf="showSpinner">
+                              <mat-spinner style="width: 100%; height: 100%;"></mat-spinner>
+                            </div>
+                            <content class="N9wOvf fICMMe" *ngFor="let chat of userChats$ | async; trackBy: trackByFn;" matRipple (click)="selectChat(chat.id, $event, chat.uid)" role="option" tabindex="-1" id="{{ chat.id }}">
+                              <div class="clmEye">
+                                <div class="Fmgnmf">
+                                  <div class="CaAkD RntNLb">
+                                    <div class="qkdzle hIypqc xqCI7b MPRaLc" [ngClass]="chat.color">{{ chat.name.charAt(0) }}</div>
+                                  </div>
+                                  <div class="EnEC8">
+                                    <div class="tpEAA">
+                                      <div class="ReFmyd">
+                                        <svg *ngIf="isMuted(chat.id, user.muted)" xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="Ht7Nrb"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 18.69L7.84 6.14 5.27 3.49 4 4.76l2.8 2.8v.01c-.52.99-.8 2.16-.8 3.42v5l-2 2v1h13.73l2 2L21 19.72l-1-1.03zM12 22c1.11 0 2-.89 2-2h-4c0 1.11.89 2 2 2zm6-7.32V11c0-3.08-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-.15.03-.29.08-.42.12-.1.03-.2.07-.3.11h-.01c-.01 0-.01 0-.02.01-.23.09-.46.2-.68.31 0 0-.01 0-.01.01L18 14.68z"></path></svg>
+                                        {{ chat.name }}
+                                      </div>
+                                      <div class="C0Zf2c">
+                                        <time class="uPuyYb">
+                                          <div>{{ chat.lastMessage | dateConvertor:trigger }}</div>
+                                        </time>
+                                      </div>
+                                    </div>
+                                    <div class="jI8Ljd">
+                                      <div class="TAyRfc">
+                                        <span *ngIf="user.uid == chat.lastMessage_uid">You: </span>
+                                        <span>{{ chat.lastMessage_str }}</span>
+                                      </div>
+                                      <div>
+                                        <div class="U26fgb JRtysb iVZ8Ie" role="button" [matMenuTriggerFor]="textMenu" matTooltip="Options">
+                                          <content class="MhXXcc oJeWuf">
+                                            <span class="Lw7GHd snByac">
+                                              <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="EaAuYe"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+                                            </span>
+                                          </content>
+                                        </div>
+                                        <mat-menu #textMenu="matMenu">
+                                          <button mat-menu-item (click)="cs.muteChat(chat.id)" *ngIf="!isMuted(chat.id, user.muted)">Mute</button>
+                                          <button mat-menu-item (click)="cs.unmuteChat(chat.id)" *ngIf="isMuted(chat.id, user.muted)">Unmute</button>
+                                          <button mat-menu-item (click)="leaveChat(chat.id)">Leave group</button>
+                                        </mat-menu>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </content>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Wh4Cqb">
+                    <div class="lp4Mgb" *ngIf="!hasChatBeenSelected && !isAddingPeople">
+                      <div class="O8qc5b">
+                        <img class="JpzO5d" src="https://www.gstatic.com/android-messages-web/images/splash_light.svg" alt="" aria-hidden="true" *ngIf="!theme.darkTheme">
+                        <img class="BUVPxb" src="https://www.gstatic.com/android-messages-web/images/splash_dark.svg" alt="" aria-hidden="true" *ngIf="theme.darkTheme">
+                      </div>
+                      <div class="JpsRoc">Stay connected on the go</div>
+                      <div class="I1Ogre">Firechat messages sync to your phone. To reduce data usage, connect your phone to Wi-Fi.</div>
+                    </div>
+                    <div class="Hrl1I zS87sc" *ngIf="chat$ | async as chat">
+                      <div class="Hrl1I" id="conversation_{{chat.id}}" *ngIf="hasChatBeenSelected">
+                        <div class="Hrl1I zS87sc">
+                          <div class="oVWr3d">
+                            <div>
+                              <div class="xnIWt">
+                                <div>
+                                  <div class="BXXoQe aYWKbb UIP7Fd">
+                                    <div class="ePd7H">
+                                      <div class="U26fgb mUbCce fKz7Od WOuD9e Yv0mqd" role="button" matRipple [matRippleCentered]="true" matTooltip="Back" (click)="back()">
+                                        <content class="xjKiLb">
+                                          <span style="top: -12px;">
+                                            <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="y9aaxd"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg>
+                                          </span>
+                                        </content>
+                                      </div>
+                                      <div class="YjI0kb y9aaxd kVu3sd">{{ chat.name }}</div>
+                                    </div>
+                                    <div class="GWQsKd">
+                                      <div class="U26fgb mUbCce fKz7Od xB5CMb grTi1e" role="button" matRipple [matRippleCentered]="true" matTooltip="{{isMuted(chat.id, user.muted) ? 'Unmute conversation' : 'Mute conversation'}}" (click)="toggleMute(chat.id, user.muted)">
+                                        <content class="xjKiLb">
+                                          <span style="top: -12px;">
+                                            <svg *ngIf="!isMuted(chat.id, user.muted)" width="24" height="24" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" class="w2DTdc"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path></svg>
+                                            <svg *ngIf="isMuted(chat.id, user.muted)" xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w2DTdc"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 18.69L7.84 6.14 5.27 3.49 4 4.76l2.8 2.8v.01c-.52.99-.8 2.16-.8 3.42v5l-2 2v1h13.73l2 2L21 19.72l-1-1.03zM12 22c1.11 0 2-.89 2-2h-4c0 1.11.89 2 2 2zm6-7.32V11c0-3.08-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-.15.03-.29.08-.42.12-.1.03-.2.07-.3.11h-.01c-.01 0-.01 0-.02.01-.23.09-.46.2-.68.31 0 0-.01 0-.01.01L18 14.68z"></path></svg>
+                                          </span>
+                                        </content>
+                                      </div>
+                                      <div class="U26fgb JRtysb sskT5c" role="button" matRipple [matRippleCentered]="true" matTooltip="Options" [matMenuTriggerFor]="optionMenu">
+                                        <content class="xjKiLb">
+                                          <span style="top: -12px;">
+                                            <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w2DTdc"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+                                          </span>
+                                        </content>
+                                      </div>
+                                      <mat-menu #optionMenu="matMenu">
+                                        <button mat-menu-item (click)="details(chat, user.muted, user.uid)">Group details</button>
+                                        <button mat-menu-item (click)="addPeople(chat.id, chat.uid)">Add people</button>
+                                        <button mat-menu-item (click)="leaveChat(chat.id)">Leave group</button>
+                                      </mat-menu>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ZGYTxc">
+                            <div class="y0Kqxd" role="application" aria-label="Messages list" tabindex="-1">
+                              <div id="messageList" class="CJ9aEc">
+                                <div class="Shqvsd" id="padding">
+                                  <section class="boPWvd" *ngFor="let msg of chat.messages; trackBy: trackByFn;" [ngClass]="{'RszMOe': user.uid == msg.uid, 'r59vlc': user.uid != msg.uid && msg.uid !== 'system', 'system': msg.uid === 'system'}">
+                                    <div *ngIf="msg.uid !== 'system'">
+                                      <time class="SkNmi">
+                                        <div>{{ msg.createdAt | smsConvertor:trigger }}</div>
+                                      </time>
+                                      <span *ngIf="user.uid != msg.uid" class="username">{{ msg.user?.displayName }}</span>
+                                      <div class="LBrqSb KXKOS Ksikcc" [ngClass]="{'Y58cPb': user.uid == msg.uid, 'ReMHf': user.uid != msg.uid}" (click)="toggleTime($event)">
+                                        <div class="DKMVFf">
+                                          <div class="SBXG9b" *ngIf="user.uid != msg.uid">
+                                            <img *ngIf="msg.user?.photoURL != null" [src]="msg.user?.photoURL" class="qkdzle xqCI7b">
+                                            <div *ngIf="msg.user?.photoURL == null" class="qkdzle xqCI7b textPhoto" [ngClass]="msg.user?.color">
+                                              {{ msg.user?.displayName.charAt(0) }}
+                                            </div>
+                                          </div>
+                                          <div class="tHxeDb">
+                                            <div *ngIf="msg.type == 'message'" class="oLerdd zshGI INJlr" [ngClass]="[user.uid == msg.uid ? 'YxoJ7' : 'lXNy8e']">{{ msg.content }}</div>
+                                            <div *ngIf="msg.type == 'image'" class="oLerdd INJlr" [ngClass]="[user.uid == msg.uid ? 'YxoJ7' : 'lXNy8e']">
+                                              <div class="HxrEBe">
+                                                <div class="V2BVO">
+                                                  <div *ngIf="msg.content == 'LOADING_IMAGE_URL'">
+                                                    <mat-spinner color="primary" class="loadingImage"></mat-spinner>
+                                                  </div>
+                                                  <img *ngIf="msg.content != 'LOADING_IMAGE_URL'" id="image" class="QrWqSe re8vJe" [src]="msg.content" (click)="enlargeImage(msg.content, msg.user?.displayName, msg.createdAt)" />
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div *ngIf="msg.type != 'image' || msg.type == 'image' && msg.uid == user.uid" class="U26fgb JRtysb cX8Ozf" role="button" matRipple [matRippleCentered]="true" matTooltip="Message actions" [matMenuTriggerFor]="messageMenu">
+                                              <content class="MhXXcc oJeWuf">
+                                                <span class="Lw7GHd snByac">
+                                                  <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="eAhQfc"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+                                                </span>
+                                              </content>
+                                            </div>
+                                            <mat-menu #messageMenu="matMenu">
+                                              <button *ngIf="msg.type == 'message'" mat-menu-item (click)="copyText(msg.content)">Copy text</button>
+                                              <button mat-menu-item *ngIf="msg.uid === user.uid" (click)="deleteMessage(chat, msg)">Delete</button>
+                                            </mat-menu>
+                                          </div>
+                                        </div>
+                                        <div class="XFumA">
+                                          <time class="xpwn4b">
+                                            <div>{{ msg.createdAt | smsConvertor:trigger }}</div>
+                                          </time>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div *ngIf="msg.uid === 'system'" class="IJhNbe">
+                                      <div>
+                                        <time class="xpwn4b mat-text">
+                                          <div>{{ msg.createdAt | smsConvertor:trigger }}</div>
+                                        </time>
+                                      </div>
+                                      <div class="w6OQRb">{{ msg.content }}</div>
+                                    </div>
+                                  </section>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="KXb8Ve">
+                              <div class="LI5sDf"></div>
+                              <div class="KK36V">
+                                <div class="oZFTfb">
+                                  <div class="PG6Nhe">
+                                    <div class="Se5ekd"></div>
+                                    <div class="oBomce">
+                                      <textarea class="textInput" placeholder="Text message" cdkTextareaAutosize cdkAutosizeMaxRows="8" [(ngModel)]="newMsg" (keydown.enter)="submit($event, chat.id)"></textarea>
+                                    </div>
+                                    <div class="uCX1Ud">
+                                      <div class="U26fgb O0WRkf C0oVfc dUowse RDPZE" role="button" (click)="submit($event, chat.id)" [ngClass]="!newMsg ? 'sendDisabled' : 'sendActive'">
+                                        <div class="ZFr60d CeoRYc"></div>
+                                        <content class="CwaK9">
+                                          <span class="RveJvd snByac">
+                                            <div class="q2eepc">
+                                              <svg width="24" height="24" xmlns="https://www.w3.org/2000/svg" class="qCxpV"><path d="M5.374 19.893l14.538-6.19C20.604 13.392 21 12.67 21 12.05c0-.722-.396-1.341-1.088-1.65L5.374 4.208C4.286 3.59 3 4.416 3 5.757V8.44c0 .928.593 1.65 1.484 1.754.989.103 9.79 1.754 9.79 1.754s-8.801 1.651-9.79 1.754c-.89.103-1.484.929-1.484 1.754v2.683c0 1.341 1.286 2.167 2.374 1.754z"></path></svg>
+                                              <div class="kf6XZb">SMS</div>
+                                            </div>
+                                          </span>
+                                        </content>
+                                      </div>
+                                    </div>
+                                    <div class="iY2Pmc">
+                                      <input id="file" type="file" accept="image/*" capture="camera" (change)="handleUpload($event, chat.id)" hidden>
+                                      <div class="U26fgb mUbCce fKz7Od wCEWle hIKpEf KVvBPd R4WlL" role="button" matTooltip="Attachments" matRipple [matRippleCentered]="true" (click)="openFileBrowser($event)">
+                                        <div class="VTBa7b MbhUzd"></div>
+                                        <content class="xjKiLb2">
+                                          <span style="top: -12px;">
+                                            <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" class="hIKpEf"><path d="M0 0h24v24H0z" fill="none"></path><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path></svg>
+                                          </span>
+                                        </content>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="vtx05">
+                                  <div class="U26fgb O0WRkf zZhnYe C0oVfc urWq1d RDPZE urWq1dBox" role="button" (click)="submit($event, chat.id)" [ngClass]="!newMsg ? 'sendDisabled' : 'sendActive'">
+                                    <content class="CwaK9">
+                                      <span class="RveJvd snByac">
+                                        <div class="q2eepc">
+                                          <svg width="24" height="24" xmlns="https://www.w3.org/2000/svg" class="qCxpV"><path d="M5.374 19.893l14.538-6.19C20.604 13.392 21 12.67 21 12.05c0-.722-.396-1.341-1.088-1.65L5.374 4.208C4.286 3.59 3 4.416 3 5.757V8.44c0 .928.593 1.65 1.484 1.754.989.103 9.79 1.754 9.79 1.754s-8.801 1.651-9.79 1.754c-.89.103-1.484.929-1.484 1.754v2.683c0 1.341 1.286 2.167 2.374 1.754z"></path></svg>
+                                          <div class="kf6XZb">SMS</div>
+                                        </div>
+                                      </span>
+                                    </content>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="KITZGf" *ngIf="isAddingPeople">
+                        <div class="oR94Lc">
+                          <div class="BXXoQe MrQ1ie UIP7Fd">
+                            <div class="ePd7H">
+                              <div class="U26fgb mUbCce fKz7Od WOuD9e M9Bg4d" role="button" matRipple [matRippleCentered]="true" matTooltip="Back" (click)="backToChat(chat.id)">
+                                <content class="xjKiLb">
+                                  <span style="top: -12px;">
+                                    <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="y9aaxd"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg>
+                                  </span>
+                                </content>
+                              </div>
+                              <div class="YjI0kb y9aaxd kVu3sd">Add people</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="ihRPVe">
+                            <div class="ztbp4e">To:</div>
+                            <div class="k3b7Ic">
+                              <div class="zsd15b">
+                                <div class="zQSquf">
+                                  <div class="xsIbie oEtOS" *ngFor="let user of selectedUsers; trackBy: trackByFn;" (click)="removeSelectedUser(user)">
+                                    <div class="U26fgb O0WRkf oG5Srb C0oVfc tw7pse M9Bg4d" matRipple>
+                                      <div class="ZFr60d CeoRYc"></div>
+                                      <content class="CwaK9">
+                                        <span class="RveJvd">{{user.displayName}}</span>
+                                      </content>
+                                    </div>
+                                  </div>
+                                  <div class="rFrNMe upiUz H4uleb zKHdkd">
+                                    <div class="aCsJod oJeWuf">
+                                      <div class="aXBtI Wic03c">
+                                        <div class="Xb9hP">
+                                          <input type="text" class="whsOnd zHQkBf" tabindex="0" maxlength="50" placeholder="Add more people" [(ngModel)]="userFilter" (ngModelChange)="filter($event)">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <button mat-raised-button color="primary" style="min-width: 88px; height: 100%;" (click)="addNewMembers(chat.id, chat.uid)">Next</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="Dvcjv">
+                          <div class="UpCuhc DLt5x" *ngIf="filteredUsers$ | async as users;">
+                            <div class="pXeIKc vzthp" role="listbox" tabindex="0" aria-label="Contacts" style="outline: 0;">
+                              <div *ngFor="let u of users; first as isFirst; index as i; trackBy: trackByFn;">
+                                <div *ngIf="!chat.uid.includes(u.uid)">
+                                  <div *ngIf="isFirst" class="JWMvFf" role="heading" aria-level="3">{{u.displayName.charAt(0)}}</div>
+                                  <div *ngIf="!isFirst && users[i].displayName.charAt(0) != users[i-1].displayName.charAt(0)" class="JWMvFf" role="heading" aria-level="3">{{u.displayName.charAt(0)}}</div>
+                                  <content class="N9wOvf ByAIO" role="option" tabindex="-1" matRipple (click)="toggleSelected(u.uid, u.displayName)">
+                                    <div class="clmEye">
+                                      <div class="ADG5de">
+                                        <div class="F2XmJc">
+                                          <img *ngIf="!isSelected(u.uid) && u.photoURL != null" class="qkdzle xqCI7b" [src]="u.photoURL">
+                                          <div *ngIf="!isSelected(u.uid) && u.photoURL == null" class="qkdzle hIypqc xqCI7b QWul2" [ngClass]="u.color">{{u.displayName.charAt(0)}}</div>
+                                          <div *ngIf="isSelected(u.uid)" class="or7jdd">
+                                            <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="eR68Ud"><path d="M0 0h24v24H0z" fill="none"></path><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>
+                                          </div>
+                                        </div>
+                                        <div class="Qh0KPe">
+                                          {{u.displayName}}
+                                          <div class="ip3Hqc" style="display: none;">
+                                            TELE_NUMBER
+                                            <span class="RXEiFb">·</span>
+                                            CONTACT_TYPE
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </content>
+                                </div>
+                              </div>
+                              <div *ngIf="users.length == 0" class="SYfVLe">No contacts found</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

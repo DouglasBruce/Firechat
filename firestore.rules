@@ -1,0 +1,40 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	match /chats/{chatId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    
+    match /emails/{emailId} {
+    	allow read;
+      allow create;
+      allow update, delete: if isSignedIn() && isOwner(emailId);
+    }
+    
+    match /displayNames/{displayNameId} {
+    	allow read;
+      allow create;
+      allow update, delete: if isSignedIn() && isOwner(displayNameId);
+    }
+    
+    match /users/{userId} {
+      allow create;
+    	allow read: if isSignedIn();
+      allow update, delete: if isSignedIn() && isOwner(userId);
+    }
+    
+    /// Functions ///
+    function isSignedIn() {
+    	return request.auth != null;
+    }
+    function isOwner(userId) {
+    	return request.auth.uid == userId;
+    }
+    function emailVerified() {
+    	return request.auth.token.email_verified;
+    }
+    function getUserData() {
+    	return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+  }
+}

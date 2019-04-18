@@ -1,0 +1,64 @@
+<content class="dialogContent">
+    <div>
+        <div class="dialogInput">
+            <mat-grid-list cols="4">
+                <mat-grid-tile (click)="changeColor('purple')">
+                    <div class="mat-color-picker-menu-item" matRipple>
+                        <div class="color-picker-swatch">
+                            <mat-icon class="color-chosen-icon" *ngIf="chosenColor === 'purple'">check_circle</mat-icon>
+                            <div class="color-picker active" style="background-color: #af5cf7;"></div>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile (click)="changeColor('orange')">
+                    <div class="mat-color-picker-menu-item" matRipple>
+                        <div class="color-picker-swatch">
+                            <mat-icon class="color-chosen-icon" *ngIf="chosenColor === 'orange'">check_circle</mat-icon>
+                            <div class="color-picker" style="background-color: #fa903e;"></div>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile (click)="changeColor('yellow')">
+                    <div class="mat-color-picker-menu-item" matRipple>
+                        <div class="color-picker-swatch">
+                            <mat-icon class="color-chosen-icon" *ngIf="chosenColor === 'yellow'">check_circle</mat-icon>
+                            <div class="color-picker" style="background-color: #fcc934;"></div>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile (click)="changeColor('red')">
+                    <div class="mat-color-picker-menu-item" matRipple>
+                        <div class="color-picker-swatch">
+                            <mat-icon class="color-chosen-icon" *ngIf="chosenColor === 'red'">check_circle</mat-icon>
+                            <div class="color-picker" style="background-color: #ee675c;"></div>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile (click)="changeColor('pink')">
+                    <div class="mat-color-picker-menu-item" matRipple>
+                        <div class="color-picker-swatch">
+                            <mat-icon class="color-chosen-icon" *ngIf="chosenColor === 'pink'">check_circle</mat-icon>
+                            <div class="color-picker" style="background-color: #ff63b8;"></div>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile (click)="changeColor('green')">
+                    <div class="mat-color-picker-menu-item" matRipple>
+                        <div class="color-picker-swatch">
+                            <mat-icon class="color-chosen-icon" *ngIf="chosenColor === 'green'">check_circle</mat-icon>
+                            <div class="color-picker" style="background-color: #5bb974;"></div>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile (click)="changeColor('blue')">
+                    <div class="mat-color-picker-menu-item" matRipple>
+                        <div class="color-picker-swatch">
+                            <mat-icon class="color-chosen-icon" *ngIf="chosenColor === 'blue'">check_circle</mat-icon>
+                            <div class="color-picker" style="background-color: #4ecde6;"></div>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </div>
+</content>

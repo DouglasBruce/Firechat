@@ -1,0 +1,325 @@
+mat-form-field {
+    width: 100%;
+    font-size: 16px;
+}
+
+.boxSizing, .container::before, .container::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.container * {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+.cardContainer {
+    min-height: calc(100vh - 56px);
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    max-width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.progressBarContainer {
+    position: fixed;
+    height: 4px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+.progressBar {
+    height: 4px;
+    overflow: hidden;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    width: 100%;
+}
+
+.formContainer {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 24px 24px 36px;
+}
+
+.logoContainer {
+    height: 24x;
+}
+
+.logo {
+    height: 37px;
+    margin: 0 auto;
+    overflow: visible;
+    position: relative;
+    width: 74px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Product Sans', Roboto, Arial, sans-serif;
+}
+
+.cardContentContainer {
+    overflow: hidden;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: auto -24px;
+}
+
+.cardInfoContainer {
+    text-align: center;
+}
+
+.headingText {
+    padding-bottom: 0;
+    padding-top: 0;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3333;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-family: 'Product Sans', Roboto, Arial, sans-serif;
+}
+
+.subheadingText {
+    font-size: 16px;
+    letter-spacing: .1px;
+    line-height: 1.5;
+    padding-bottom: 0;
+    padding-top: 8px;
+}
+
+.cardFormContainer {
+    font-size: .1px;
+    -webkit-transform: translatez(0);
+    transform: translatez(0);
+    white-space: nowrap;
+    margin: auto -24px;
+}
+
+.cardForm {
+    display: inline-block;
+    font-size: 14px;
+    padding: 24px 0 0;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    vertical-align: top;
+    white-space: normal;
+    width: 100%;
+    border: 0 solid transparent;
+    border-width: 0 24px;
+}
+
+.cardContent {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.cardActionContainer {
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 0;
+    box-flex: 0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin-left: -16px;
+    margin-top: 32px;
+    min-height: 48px;
+    padding-bottom: 20px;
+}
+
+.cardAction {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.first, .last {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+.first {
+    text-align: right;
+}
+
+.btnMat {
+    margin: 8px 16px !important;
+    max-width: 300px !important;
+    letter-spacing: .25px !important;
+    font-family: 'Product Sans', Roboto, Arial, sans-serif;
+}
+
+.matErr {
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    line-height: normal;
+    margin-top: 2px;
+    letter-spacing: 0;
+}
+
+.matErrIcon {
+    font-size: 16px !important;
+    margin-right: 8px;
+    margin-top: -2px;
+}
+
+.accountContainer {
+    height: 32px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.accountBubble {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    font-family: Roboto, arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .25px;
+    max-width: 100%;
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+    padding: 5px 7px 5px 5px;
+}
+
+.avatarContainer {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.email {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: ltr;
+    text-align: left;
+    font-family: 'Product Sans', Roboto, Arial, sans-serif;
+}
+
+@media (min-width: 450px) {
+    .formContainer {
+        padding: 48px 40px 36px;
+    }
+    .cardContentContainer, .cardContent {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .cardContentContainer, .cardFormContainer, .cardContent {
+        margin: auto -40px;
+    }
+    .cardForm {
+        border-left-width: 40px;
+        border-right-width: 40px;
+    }
+}
+
+@media (min-width: 599px) {
+    .cardContainer {
+        min-height: calc(100vh - 64px);
+    }
+}
+
+@media (min-width: 601px) {
+    .container::before {
+        min-height: 30px;
+        -webkit-box-flex: 1;
+        box-flex: 1;
+        -webkit-flex-grow: 1;
+        flex-grow: 1;
+        content: '';
+        display: block;
+        height: 24px;
+    }
+    .container {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        min-height: calc(100vh - 64px);
+        position: relative;
+    }
+    .container::after {
+        min-height: 64px;
+        -webkit-box-flex: 1;
+        box-flex: 1;
+        -webkit-flex-grow: 1;
+        flex-grow: 1;
+        content: '';
+        display: block;
+        height: 24px;
+    }
+    .cardContainer {
+        width: 450px;
+        min-height: 0;
+        -webkit-flex-shrink: 0;
+        flex-shrink: 0;
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        display: block;
+        margin: 0 auto;
+        -webkit-transition: .2s;
+        transition: .2s;
+    }
+    .progressBarContainer {
+        position: absolute;
+    }
+    .progressBar {
+        -webkit-border-radius: 8px 8px 0 0;
+        border-radius: 8px 8px 0 0;
+    }
+    .formContainer {
+        height: auto;
+        min-height: 400px;
+        overflow-y: auto;
+        -webkit-transition: .2s;
+        transition: .2s;
+    }
+}

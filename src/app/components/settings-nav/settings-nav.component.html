@@ -1,0 +1,23 @@
+<mat-toolbar class="topNav">
+  <mat-toolbar-row style="padding: 8px;">
+    <button mat-icon-button (click)="back()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="brand" style="font-family: 'Product Sans', Roboto, Arial, sans-serif;">Settings</span>
+    <span class="flex-spacer"></span>
+    <button class="toolbarIcon" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More options" style="margin-right: -5px;">
+      <mat-icon class="icon">more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngIf="!theme.darkTheme" (click)="toggleDarkTheme()">
+        <span>Enable dark mode</span>
+      </button>
+      <button mat-menu-item *ngIf="theme.darkTheme" (click)="toggleDarkTheme()">
+        <span>Disable dark mode</span>
+      </button>
+      <button mat-menu-item *ngIf="auth.user$ | async;" (click)="signOut()">
+        <span>Sign out</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

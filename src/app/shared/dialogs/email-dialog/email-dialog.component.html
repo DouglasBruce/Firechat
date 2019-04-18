@@ -1,0 +1,96 @@
+<div *ngIf="isReauthenticated; then reauthenticated else guest">
+</div>
+
+<ng-template #guest>
+  <mat-dialog-content [ngClass]="{fullDialogHeight: (isHandset$ | async)}">
+    <div style="display: flex; flex-direction: column;">
+      <div class="logoContainer">
+        <div id="logo" class="logo">
+          <span class="g_blue">F</span>
+          <span class="g_red">i</span>
+          <span class="g_yellow">r</span>
+          <span class="g_blue">e</span>
+          <span class="g_green">c</span>
+          <span class="g_red">h</span>
+          <span class="g_yellow">a</span>
+          <span class="g_green">t</span>
+        </div>
+      </div>
+      <div class="headerText">
+        <h1 class="titleText">
+          Hi {{data.displayName}}
+        </h1>
+        <div class="accountContainer">
+          <div class="accountBubble">
+            <div class="avatarContainer">
+              <img *ngIf="data.photoUrl != null" [src]="data.photoUrl" class="avatar">
+              <div *ngIf="data.photoUrl == null" class="photoAvatar" [ngClass]="data.color">
+                {{ data.displayName.charAt(0) }}
+              </div>
+            </div>
+            <div class="email">{{ data.email }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="verifyText">To continue, first verify it's you</div>
+      <form [formGroup]="reauthForm" novalidate (keyup.enter)="reauth()" style="padding-top: 16px;">
+        <mat-form-field color="primary" appearance="outline" hideRequiredMarker="true" spellcheck="false">
+          <mat-label>Enter your password</mat-label>
+          <input matInput required [formControl]="reauthPassword" [type]="isAuthPassVis ? 'text':'password'" autocomplete="off" [errorStateMatcher]="matcher" autofocus>
+          <button mat-icon-button matSuffix>
+            <mat-icon (click)="isAuthPassVis = !isAuthPassVis" matTooltip="{{isAuthPassVis ? 'Hide password' : 'Show password'}}" style="opacity: 0.65;">{{isAuthPassVis ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="reauthPassword.invalid" class="matErr"><mat-icon class="matErrIcon">error</mat-icon> {{getReauthPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button color="primary" (click)="forgotPassword()" style="margin-left: -16px;"><span style="letter-spacing: .25px;">Forgot password?</span></button>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close><span style="letter-spacing: .25px;">Cancel</span></button>
+    <button mat-button color="primary" [disabled]="reauthForm.invalid" (click)="reauth()" style="margin-right: -16px; margin-left: 0;"><span style="letter-spacing: .25px;">Next</span></button>
+  </mat-dialog-actions>
+</ng-template>
+
+<ng-template #reauthenticated>
+  <div class="headingContainer">
+    <div class="dialogTitle">Change email address</div>
+    <div style="height: 0;">
+      <div class="closeContainer">
+        <content class="closeContent">
+          <span style="top: -20px;">
+            <button mat-icon-button mat-dialog-close tabindex="-1" matTooltip="Close">
+              <mat-icon>close</mat-icon>
+            </button>
+          </span>
+        </content>
+      </div>
+    </div>
+  </div>
+  <content class="dialogContent" [ngClass]="{fullDialogHeight2: (isHandset$ | async)}">
+    <div>
+      <div class="dialogInput">
+        <mat-form-field color="primary" appearance="outline">
+          <mat-label>Current</mat-label>
+          <input matInput disabled value="{{data.email}}">
+        </mat-form-field>
+      </div>
+      <div class="dialogInput">
+        <form [formGroup]="emailForm" novalidate (keyup.enter)="update()">
+          <mat-form-field color="primary" appearance="outline" hideRequiredMarker="true" spellcheck="false">
+            <mat-label>New</mat-label>
+            <input matInput required [formControl]="email" type="text" autocomplete="off" [errorStateMatcher]="matcher" autofocus>
+            <mat-icon matSuffix *ngIf="email.valid" style="color: #1db954;">done</mat-icon>
+            <mat-hint *ngIf="email.pending">Checking availability of {{ email.value }}</mat-hint>
+            <mat-error *ngIf="email.invalid" class="matErr"><mat-icon class="matErrIcon">error</mat-icon> {{getEmailErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </content>
+  <div class="dialogAction">
+    <button mat-button mat-dialog-close style="letter-spacing: .25px;">Cancel</button>
+    <button mat-button color="primary" [disabled]="emailForm.invalid || email.pending" (click)="update()" style="letter-spacing: .25px;">Done</button>
+  </div>
+</ng-template>

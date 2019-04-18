@@ -1,0 +1,71 @@
+<div class="tOrNgd">
+    <div class="PNenzf" role="heading" aria-level="1">Group details</div>
+</div>
+<content class="PbnGhe oJeWuf fb0g6 MSfgie">
+    <div>
+        <div>
+            <div class="AN2cxf">
+                <div class="sbb62e" role="heading" aria-level="2">General</div>
+                <label class="jMb12e">
+                    <div class="IxweWd">
+                        <div class="D2H8M">Mute conversation</div>
+                    </div>
+                    <mat-slide-toggle tabindex="0" role="checkbox" [checked]="checked" (change)="toggleMuted(data.chat.id)"></mat-slide-toggle>
+                </label>
+                <label class="jMb12e" (click)="changeName(data.chat.id, name)">
+                    <div class="IxweWd Ixwe1Wd">
+                        <div class="">
+                            <div class="D2H8M">Change chat name</div>
+                            <div class="D2H8M2">{{ name }}</div>
+                        </div>
+                        <div class="iconContainer">
+                            <figure class="icon" aria-hidden="true">
+                                <mat-icon class="matArrow">keyboard_arrow_right</mat-icon>
+                            </figure>
+                        </div>
+                    </div>
+                </label>
+                <label class="jMb12e" (click)="changeColor(data.chat.id, color)">
+                    <div class="IxweWd Ixwe1Wd">
+                        <div class="">
+                            <div class="D2H8M">Change chat color</div>
+                            <div class="D2H8M3">{{ color }}</div>
+                        </div>
+                        <div class="Ixwe2Wd" [ngClass]="color"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div>
+            <div class="AN2cxf IDlcIc">
+                <div class="sbb62e" role="heading" aria-level="2">People in this conversation</div>
+                <div class="eMDMDe LHuFB" role="button" aria-label="Add people" aria-disabled="false" tabindex="0" (click)="addPeople()">
+                    <div class="AbGhie">
+                        <svg xmlns="https://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" class="fOZyre"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+                    </div>
+                    <div class="n4jTu">Add people</div>
+                </div>
+                <div role="listbox" aria-label="Participant list">
+                    <content class="N9wOvf7 RDPZE" *ngFor="let member of members" role="option" tabindex="-1" aria-disabled="true" aria-selected="false">
+                        <div *ngIf="member.uid != data.uid">
+                            <div class="eMDMDe">
+                                <div class="Uic0Md">
+                                    <div *ngIf="member.photoURL == null" class="qkdzle hIypqc xqCI7b" [ngClass]="member.color" aria-hidden="true" role="presentation">{{ member.displayName.charAt(0) }}</div>
+                                    <img *ngIf="member.photoURL != null" [src]="member.photoURL" class="qkdzle xqCI7b" />
+                                </div>
+                                <div class="n4jTu">
+                                    {{ member.displayName }}
+                                    <div class="BPt1mb" style="display: none;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </content> 
+                </div>
+            </div>
+        </div>
+    </div>
+</content>
+<div class="XfpsVe">
+    <button mat-button style="letter-spacing: .25px; font-family: 'Product Sans',Roboto,arial,sans-serif;" class="RveJvd RveJvd2 snByac" role="button" tabindex="0" aria-disabled="false" (click)="leaveChat()">Leave group</button>
+    <button mat-raised-button mat-dialog-close color="primary" style="letter-spacing: .25px; font-family: 'Product Sans',Roboto,arial,sans-serif;" class="RveJvd" role="button" tabindex="0" aria-disabled="false">Done</button>
+</div>
